@@ -1,29 +1,17 @@
 import 'package:eboutiqe_do_pave/utills/black_button.dart';
 import 'package:eboutiqe_do_pave/utills/sm_box.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
-  bool isPasswordVisible = true;
-  //password visibility function
-  void togglePasswordVisibility() {
-    setState(() {
-      if (isPasswordVisible) {
-        isPasswordVisible = false;
-      } else {
-        isPasswordVisible = true;
-      }
-    });
-  }
-
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +30,9 @@ class _LoginState extends State<Login> {
         children: [
           Padding(
             // main welcom massege
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
             child: Text(
-              'Welcome back! Glad to\nsee you, Again!',
+              'Hello! Register to get\nstarted',
               style: GoogleFonts.poppins(
                 textStyle: TextStyle(
                   fontSize: 25,
@@ -62,16 +50,14 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
-                    vertical: 10,
+                    vertical: 15,
                   ),
 
                   child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
                     //start of email
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xffF7F8F9),
-
                       enabledBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xffE8ECF4)),
                       ),
@@ -79,7 +65,7 @@ class _LoginState extends State<Login> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xffE8ECF4)),
                       ),
-                      hintText: 'Enter your email',
+                      hintText: 'Username',
                       hintStyle: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: 15,
@@ -96,10 +82,10 @@ class _LoginState extends State<Login> {
                     left: 20,
                     right: 20,
                     top: 10,
-                    bottom: 0,
+                    bottom: 15,
                   ),
                   child: TextFormField(
-                    obscureText: isPasswordVisible,
+                    keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xffF7F8F9),
@@ -110,7 +96,7 @@ class _LoginState extends State<Login> {
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xffE8ECF4)),
                       ),
-                      hintText: 'Enter your password',
+                      hintText: 'Email',
                       hintStyle: GoogleFonts.poppins(
                         textStyle: TextStyle(
                           fontSize: 15,
@@ -118,37 +104,73 @@ class _LoginState extends State<Login> {
                           color: Color(0xff8391A1),
                         ),
                       ),
-                      suffixIcon: IconButton(
-                        onPressed: togglePasswordVisibility,
-                        icon: isPasswordVisible
-                            ? Icon(Icons.visibility_off_outlined)
-                            : Icon(Icons.visibility_outlined),
-                      ),
                     ),
                   ),
                 ), // end of password text form
+                Padding(
+                  //start of passeord form
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    top: 10,
+                    bottom: 15,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffF7F8F9),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffE8ECF4)),
+                      ),
+
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffE8ECF4)),
+                      ),
+                      hintText: 'Password',
+                      hintStyle: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff8391A1),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  //start of passeord form
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 20,
+                    top: 10,
+                    bottom: 15,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffF7F8F9),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffE8ECF4)),
+                      ),
+
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xffE8ECF4)),
+                      ),
+                      hintText: 'Confirm Password',
+                      hintStyle: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff8391A1),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ), //end of form
-          TextButton(
-            // Start of forget password button
-            onPressed: () => Navigator.pushNamed(context, 'forgetpassword'),
 
-            style: ButtonStyle(splashFactory: NoSplash.splashFactory),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 235, bottom: 10, top: 10),
-              child: Text(
-                'Forget Password?',
-                style: GoogleFonts.poppins(
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xff6A707C),
-                  ),
-                ),
-              ),
-            ),
-          ), // End of forget password button
           Padding(
             //Strat of login button
             padding: const EdgeInsets.only(
@@ -158,11 +180,11 @@ class _LoginState extends State<Login> {
               left: 8,
             ), // padding from edges
             child: BlackButton(
-              buttonText: 'Login',
+              buttonText: 'Register',
               buttonOnPressed: () {
                 Navigator.of(
                   context,
-                ).pushNamedAndRemoveUntil('Home', (route) => false);
+                ).pushNamedAndRemoveUntil('login', (route) => false);
               },
             ), // end of login button
           ),
@@ -185,7 +207,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Text(
-                  'Or Login With',
+                  'Or Register With',
                   style: GoogleFonts.poppins(
                     textStyle: TextStyle(
                       fontSize: 14,
@@ -230,19 +252,19 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Don’t have an account?',
+                  'Already have an account?',
                   style: GoogleFonts.urbanist(
                     textStyle: TextStyle(
                       fontSize: 15,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w500,
                       color: Color(0xff1E232C),
                     ),
                   ),
                 ),
                 TextButton(
-                  onPressed: () => Navigator.of(context).pushNamed('Register'),
+                  onPressed: () => Navigator.of(context).pop(),
                   child: Text(
-                    'Register Now',
+                    'Login Now',
                     style: GoogleFonts.urbanist(
                       textStyle: TextStyle(
                         color: Color(0xff3AA1FF),
@@ -254,7 +276,7 @@ class _LoginState extends State<Login> {
                 ),
               ],
             ),
-          ), // end of register button
+          ),
         ], // end of main column children
       ), //End of main column
     );
